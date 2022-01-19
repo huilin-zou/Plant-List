@@ -1,18 +1,22 @@
-import React, { Fragment } from "react";
+import React, { Fragment} from "react";
 import "./App.css";
 import { InputPlants } from "./components/InputPlants";
 import { ListPlants } from "./components/ListPlants";
+import { Login } from "./components/Login";
+import { BrowserRouter,Routes, Route } from "react-router-dom";
+import Nav from "./components/Nav";
 
 function App() {
   return (
-    <Fragment>
-      <div className="container">
-     
-        <InputPlants></InputPlants>
-        <ListPlants></ListPlants>
-        
-      </div>
-    </Fragment>
+    <BrowserRouter>
+      <Nav/>
+        <Routes>
+        <Route path="/" element={<ListPlants />} />
+        <Route path="/ListPlants" element={<ListPlants />} />
+        <Route path="/Login" element={<Login />} />
+        </Routes>
+      
+    </BrowserRouter>
   );
 }
 

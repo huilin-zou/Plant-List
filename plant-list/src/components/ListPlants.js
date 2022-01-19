@@ -1,5 +1,8 @@
 import React,{Fragment,useState,useEffect} from 'react'
 import { EditPlants } from './EditPlants'
+import { Navigate } from "react-router-dom";
+
+
 export const ListPlants = () => {
 
     const [plants,setPlants]=useState([])
@@ -35,6 +38,7 @@ export const ListPlants = () => {
     },[])
     return (
         <Fragment>
+
             <table className="table mt-5 text-center">
     <thead>
       <tr>
