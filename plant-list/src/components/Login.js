@@ -1,4 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
+import './Login.css'
 
 export const Login = () => {
   const [usernameReg, setUsernameReg] = useState("");
@@ -43,13 +44,15 @@ export const Login = () => {
   }
 
   return (
-    <Fragment>
+    <Fragment >
+       
       <div className="registration"
       style={{paddingLeft:"50px"}}
      >
         Registration<br></br>
+     
         
-        <input
+        <input className=" form-control"
          style={{width:"600px",height:"40px"}}
         placeholder="Username"
           type="text"
@@ -62,6 +65,8 @@ export const Login = () => {
         <br></br>
       
         <input
+         className=" form-control"
+         placeholder="Password"
         required
           type="password"
           onChange={(e) => {
@@ -76,10 +81,12 @@ export const Login = () => {
         <br></br>
       </div>
 
-      <div className="login">
+      <div className="login" style={{paddingLeft:"50px"}}>
         Login<br></br>
         <label>Username</label>
         <input
+        style={{width:"600px",height:"40px"}}
+        className=" form-control"
         required
           type="text"
           onChange={(e) => {
@@ -89,6 +96,8 @@ export const Login = () => {
         ></input>
         <label>Password</label>
         <input
+        style={{width:"600px",height:"40px"}}
+        className=" form-control"
         required
           type="password"
           onChange={(e) => {
@@ -96,8 +105,9 @@ export const Login = () => {
           }}
           value={passwordLogin}
         ></input>
-        <button onClick={loginValidation}>Submit</button>
+        <button variant="outline-secondary" onClick={loginValidation}>Submit</button>
       </div>
+    
     </Fragment>
   );
 };
