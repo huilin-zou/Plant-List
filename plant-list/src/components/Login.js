@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import './Login.css'
+
 
 export const Login = () => {
   const [usernameReg, setUsernameReg] = useState("");
@@ -30,15 +30,18 @@ export const Login = () => {
       e.preventDefault()
       try {
         
-        const response = await fetch("http://localhost:5000/userinfo", {
-          method: "GET",
+        const response = await fetch(`http://localhost:5000/userinfo/${usernameLogin}`, {
+          method: "POST",
           headers: { "Content-Type": "application/json" },
-        //  body: JSON.stringify(body)
+          body: JSON.stringify({password:passwordLogin})
+
+         
         });
-       // console.log("loginValidation ",Oneuser)
-  
-        window.location="/Login"
+        
+        
+       window.location="/Login"
       } catch (error) {
+        
         console.log(error.message);
       }
   }

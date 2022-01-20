@@ -10,10 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.1",
+    "browserify-zlib": "^0.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",
     "pg": "^8.7.1",
-    "pool": "^0.4.1"
+    "pool": "^0.4.1",
+    "validator": "^13.7.0"
   }
 }

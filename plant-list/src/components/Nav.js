@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 export default function Nav() {
   return (
     <nav id="nav">
+    
       <ul className="nav m-5 justify-content-center">
         <Link to="/" />
         <li className="nav-item">
@@ -12,10 +13,11 @@ export default function Nav() {
             href="/ListPlants"
             style={{
               color: "white",
-              fontSize: "20px",
+              fontSize:"30px",
               paddingRight: "100px",
               textDecorationLine: "underline",
               fontFamily: "Roboto"
+              
             }}
           >
             Plant Collection
@@ -29,7 +31,7 @@ export default function Nav() {
             href="Login"
             style={{
               color: "white",
-              fontSize: "20px",
+              fontSize: "30px",
               paddingRight: "100px",
               textDecorationLine: "underline",
               fontFamily: "Roboto"

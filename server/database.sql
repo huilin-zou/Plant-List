@@ -8,5 +8,5 @@ create table plant(
 create table userinfo(
     user_id serial primary key,
     username varchar(255),
-    password char(30)
+    password varchar(255)
 );

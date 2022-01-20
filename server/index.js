@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+const{usernameValidation,passwordValidation}=require("./validation")
 
 app.use(cors());
 app.use(express.json()); //req.body
@@ -10,28 +11,59 @@ app.use(express.json()); //req.body
 //sign up
 app.post("/userinfo", async (req, res) => {
   try {
+
+    let errors={}
     const { username } = req.body;
     const { password } = req.body;
 
-    const newUser = await pool.query(
-      "INSERT INTO userinfo(username,password) VALUES($1,$2) RETURNING * ",
-      [username, password]
-    );
+    //password encryption
+    const salt=await bcrypt.genSalt(10)
+    const hashedPassword=await bcrypt.hash(password,salt)
+
+    
+
+//check if username is taken
+const isUsernameInUse=await pool.query("select * from userinfo where username=$1",[username])
+if(isUsernameInUse.rows.length>0){
+  errors.usernameInUse="Username in use"
+}
+//create new user
+const newUser = await pool.query(
+  "INSERT INTO userinfo(username,password) VALUES($1,$2) RETURNING * ",
+  [username, hashedPassword]
+);
+    console.log("sign up success")
     res.json(newUser.rows[0]);
+
   } catch (err) {
-    console.log(err.message);
+    console.log("26",err.message);
   }
 });
 
 //user log in
-app.get("/userinfo.post", async (req, res) => {
+app.post("/userinfo/:username", async (req, res) => {
+ 
   try {
-   
-    const loginValidation = await pool.query("select * from userinfo where username=$1",[username])
-    console.log(res.json(userinfo.rows[0]))
-   
+    const {username}=req.params
+   const{password}=req.body
+    const user = await pool.query("select * from userinfo where username=$1",[username])
+    
+    
+
+    //log in
+    if(user.rows.length===0){
+      console.log("user not found")
+    }
+    
+    const isMatch=await bcrypt.compare(password,user.rows[0].password)
+    if(!isMatch){
+      console.log("password incorrect")
+    }
+   console.log('log in success')
+    
+
   } catch (error) {
-    console.log("in log in error:  ",error.message);
+    console.log("in log in error:  ",error.message)
   }
 });
 
