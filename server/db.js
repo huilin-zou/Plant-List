@@ -9,3 +9,7 @@ const pool=new Pool({
 });
 
 module.exports=pool;
+
+/* password:"zhl0818",
+    host:"localhost",
+    port:5432,*/

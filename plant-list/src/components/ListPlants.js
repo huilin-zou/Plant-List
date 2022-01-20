@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { EditPlants } from "./EditPlants";
 import { Navigate } from "react-router-dom";
-
 export const ListPlants = () => {
   const [plants, setPlants] = useState([]);
 
@@ -34,9 +33,11 @@ export const ListPlants = () => {
   }, []);
   return (
     <Fragment>
+      
       <table className="table mt-5 text-center"
       style={{fontSize:"20px"}}>
         <thead>
+          
           <tr>
             <th>Name</th>
             <th>Edit</th>
@@ -44,6 +45,7 @@ export const ListPlants = () => {
           </tr>
         </thead>
         <tbody>
+          
           {plants.map((plant) => (
             <tr key={plant.pid}>
               <td>{plant.name}</td>

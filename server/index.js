@@ -59,8 +59,11 @@ app.post("/userinfo/:username", async (req, res) => {
     if(!isMatch){
       console.log("password incorrect")
     }
-   console.log('log in success')
-    
+   
+    if(isMatch){
+      res.json(user.rows[0]);
+      console.log("yey log in success")
+    }
 
   } catch (error) {
     console.log("in log in error:  ",error.message)

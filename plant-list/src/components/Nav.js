@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { InputPlants } from "./InputPlants";
 
 export default function Nav() {
   return (
@@ -22,10 +23,13 @@ export default function Nav() {
           >
             Plant Collection
           </a>
+          <InputPlants></InputPlants>
+          
         </li>
 
         <Link to="/logIn" />
         <li className="nav-item">
+        
           <a
             className="nav-link"
             href="Login"

@@ -22,9 +22,7 @@ export const InputPlants = () => {
     return (
         <div>
             <Fragment>
-                <h1 className='text-center mt-5'>
-                Plant Collection
-                </h1>
+              
 
                 <form
                 className='d-flex mt-5'
